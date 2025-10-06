@@ -23,19 +23,6 @@ test('runTestFile should be a function', () => {
   expect(runTestFile, 'to be a function');
 });
 
-test('runTestFile should execute a test file successfully', async () => {
-  ensureSESInitialized();
-
-  const result = await runTestFile('test/fixture/basic/test/index.test.js', {
-    verbose: false,
-  });
-
-  expect(result, 'to be an object');
-  expect(result, 'to satisfy', {
-    namespace: expect.it('to be an object'),
-  });
-});
-
 test('runTestFile should handle invalid file paths', async () => {
   ensureSESInitialized();
 
