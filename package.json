@@ -1,6 +1,6 @@
 {
   "name": "cenobite",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "type": "module",
   "description": "A hardened test runner using Secure EcmaScript (SES)",
   "repository": {
