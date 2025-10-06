@@ -28,7 +28,20 @@
     },
     "./package.json": "./package.json"
   },
-  "keywords": [],
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "test",
+    "test-runner",
+    "ses",
+    "hardened",
+    "secure",
+    "compartment",
+    "endo"
+  ],
   "scripts": {
     "build": "tshy",
     "cenobite": "node --import tsx src/cli.ts",
