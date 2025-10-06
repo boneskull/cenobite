@@ -88,7 +88,6 @@ npm run lint:markdown # markdownlint-cli2
 ### Test Structure (`test/`)
 
 - **`cli.test.ts`** - CLI functionality tests
-- **`example-compartment.test.js`** - Example compartment isolation demo
 - **`fixture/`** - Test fixtures (excluded from TypeScript checking)
 
 ### Build Outputs
