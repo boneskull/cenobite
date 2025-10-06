@@ -5,6 +5,7 @@
     "exactOptionalPropertyTypes": true,
     "isolatedModules": true,
     "jsx": "react-jsx",
+    "lib": ["es2022", "dom"],
     "module": "nodenext",
     "moduleDetection": "force",
     "noImplicitOverride": true,
@@ -14,8 +15,10 @@
     "sourceMap": true,
     "strict": true,
     "stripInternal": true,
-    "target": "esnext",
+    "target": "es2022",
     "types": ["node"],
     "verbatimModuleSyntax": false
-  }
+  },
+  "exclude": ["test/fixture/**/*"],
+  "include": ["src/**/*.ts", "test/**/*.ts", "test/**/*.js"]
 }

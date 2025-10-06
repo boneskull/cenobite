@@ -4,6 +4,7 @@
     "checkJs": true,
     "noEmit": true
   },
+  "exclude": ["../test/fixture/**/*"],
   "extends": "../tsconfig.json",
   "include": [
     "../src/**/*.ts",

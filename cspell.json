@@ -31,6 +31,6 @@
     "node_modules"
   ],
   "ignoreRandomStrings": true,
-  "ignoreWords": [],
-  "words": []
+  "ignoreWords": ["commitlintrc"],
+  "words": ["bupkis", "cenobite", "endo", "hardenedjs", "tyvm", "wallabyjs"]
 }

@@ -1,6 +1,6 @@
-# Contributing to Bupkis
+# Contributing to Cenobite
 
-Thank you for your interest in contributing to Bupkis! We welcome contributions from everyone and are grateful for every contribution made.
+Thank you for your interest in contributing to Cenobite! We welcome contributions from everyone and are grateful for every contribution made.
 
 ## Code of Conduct
 
@@ -17,7 +17,7 @@ Before creating bug reports, please check the existing issues as you might find 
 - **Provide specific examples to demonstrate the steps**
 - **Describe the behavior you observed** and **explain which behavior you expected to see**
 - **Include code samples** that demonstrate the issue
-- **Specify the version of Bupkis you're using**
+- **Specify the version of Cenobite you're using**
 - **Specify your Node.js version and operating system**
 
 ### Suggesting Enhancements
@@ -51,8 +51,8 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 2. Clone your fork locally:
 
    ```bash
-   git clone https://github.com/YOUR_USERNAME/bupkis.git
-   cd bupkis
+   git clone https://github.com/YOUR_USERNAME/cenobite.git
+   cd cenobite
    ```
 
 3. Install dependencies:
@@ -165,7 +165,7 @@ When creating new assertions:
 
 ## Debugging
 
-- Set `DEBUG=bupkis*` environment variable for detailed logging
+- Set `DEBUG=cenobite*` environment variable for detailed logging
 - Use Wallaby.js integration for real-time testing feedback
 - Check the browser developer tools for client-side issues
 
@@ -189,4 +189,4 @@ All contributors will be recognized in the project. We appreciate all forms of c
 - Feature suggestions
 - Testing and feedback
 
-Thank you for contributing to Bupkis! 🎉
+Thank you for contributing to Cenobite! 🎉

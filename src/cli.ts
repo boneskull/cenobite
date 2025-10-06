@@ -1,10 +1,6 @@
 #!/usr/bin/env node
 
 import 'ses';
-
-// SES lockdown is available globally after import
-declare const lockdown: (options?: any) => void;
-
 import { importLocation } from '@endo/compartment-mapper';
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
@@ -14,7 +10,7 @@ import { parseArgs } from 'node:util';
 const { assign, freeze, keys } = Object;
 const { Date: originalDate } = globalThis;
 
-interface TestRunOptions {
+export interface TestRunOptions {
   globals?: Record<string, unknown>;
   modules?: Record<string, unknown>;
   verbose?: boolean;
@@ -77,21 +73,21 @@ export const main = async () => {
     allowPositionals: true,
     args: process.argv.slice(2),
     options: {
-      globals: {
-        description: 'JSON string of additional globals to provide',
-        type: 'string',
-      },
       help: {
         description: 'Show help',
         short: 'h',
         type: 'boolean',
       },
-      modules: {
-        description: 'JSON string of additional modules to provide',
-        type: 'string',
+      isolate: {
+        description: 'Use compartment isolation (experimental)',
+        type: 'boolean',
       },
       reporter: {
         description: 'Test reporter (spec, tap, dot, junit)',
+        type: 'string',
+      },
+      'test-reporter': {
+        description: 'Test reporter (alias for --reporter)',
         type: 'string',
       },
       verbose: {
@@ -109,53 +105,52 @@ Cenobite - SES Compartment Test Runner
 Usage: cenobite [options] <test-file>
 
 Options:
-  -h, --help              Show this help message
-  -v, --verbose           Enable verbose output
-  --reporter <type>       Test reporter (spec, tap, dot, junit)
-  --globals <json>        Additional globals to provide (JSON string)
-  --modules <json>        Additional modules to provide (JSON string)
+  -h, --help                   Show this help message
+  -v, --verbose                Enable verbose output
+  --reporter <type>            Test reporter (spec, tap, dot, junit)
+  --test-reporter <type>       Test reporter (alias for --reporter)
+  --isolate                    Use compartment isolation (experimental)
 
 Examples:
   cenobite test.js
   cenobite --verbose test.js
   cenobite --reporter tap test.js
-  cenobite --globals '{"customGlobal": "value"}' test.js
-  cenobite --modules '{"custom-module": {...}}' test.js
+  cenobite --test-reporter junit test.js
+  cenobite --isolate test.js
 
-Each test file runs in its own compartmentalized environment where:
-- The test file and all its dependencies get their own compartments
-- Built-in Node.js modules are available
-- External modules are isolated per compartment
-- No shared mutable state between test runs
+Each test file runs with SES protection. With --isolate, tests run in compartments
+within the same process for maximum isolation.
 `);
     process.exit(values.help ? 0 : 1);
   }
 
-  // Use wrapper-based approach for Node.js test runner integration
-  const { runTestsWithCenobiteWrappers } = await import(
-    './wrapper-integration.js'
+  // Use loader hooks approach for Node.js test runner integration
+  const { runTestsWithLoaderHooks } = await import(
+    './loader-hooks-integration.js'
   );
 
   const options: {
     enableSourceMaps: boolean;
     files: string[];
     reporter?: string;
+    useCompartmentMapper?: boolean;
     verbose: boolean;
   } = {
     enableSourceMaps: true,
     files: positionals,
+    useCompartmentMapper: values.isolate ?? false,
     verbose: values.verbose ?? false,
   };
 
   // Set default reporter to mimic node:test behavior
-  if (values.reporter) {
-    options.reporter = values.reporter;
+  if (values.reporter || values['test-reporter']) {
+    options.reporter = (values.reporter || values['test-reporter'])!;
   } else {
     // Default to 'spec' reporter, or 'tap' in CI environments (like node:test)
     options.reporter = process.env.CI ? 'tap' : 'spec';
   }
 
-  const testStream = await runTestsWithCenobiteWrappers(options);
+  const testStream = await runTestsWithLoaderHooks(options);
 
   // Wait for completion
   return new Promise<void>((resolve, reject) => {
@@ -167,10 +162,9 @@ Each test file runs in its own compartmentalized environment where:
         data.counts.cancelled -
         data.counts.todo;
       if (failed > 0) {
-        process.exit(1);
-      } else {
-        resolve();
+        process.exitCode = 1;
       }
+      resolve();
     });
 
     testStream.on('error', reject);
