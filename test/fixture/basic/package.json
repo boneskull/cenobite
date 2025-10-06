@@ -1,0 +1,8 @@
+{
+  "name": "basic-fixture",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "foo": "1.0.0"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "noEmit": true
+  },
+  "extends": "../tsconfig.json",
+  "include": [
+    "../src/**/*.ts",
+    "../test/**/*.ts",
+    "../test/**/*.js",
+    "../.wallaby.js",
+    "../eslint.config.js",
+    "../.commitlintrc.js",
+    "./typedoc*.js",
+    "../scripts/*",
+    "./eslint-rules/*.js"
+  ]
+}
