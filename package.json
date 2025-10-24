@@ -71,8 +71,8 @@
     "@stylistic/eslint-plugin": "5.5.0",
     "@types/node": "24.8.1",
     "@types/wallabyjs": "0.0.15",
-    "@typescript-eslint/typescript-estree": "8.46.1",
-    "@typescript-eslint/utils": "8.46.1",
+    "@typescript-eslint/typescript-estree": "8.46.2",
+    "@typescript-eslint/utils": "8.46.2",
     "bupkis": "0.11.1",
     "cspell": "9.2.1",
     "eslint": "9.38.0",
@@ -92,7 +92,7 @@
     "tshy": "3.0.3",
     "tsx": "4.20.6",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.46.1"
+    "typescript-eslint": "8.46.2"
   },
   "knip": {
     "ignoreDependencies": [
