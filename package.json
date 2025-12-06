@@ -71,8 +71,8 @@
     "@stylistic/eslint-plugin": "5.6.1",
     "@types/node": "24.10.1",
     "@types/wallabyjs": "0.0.15",
-    "@typescript-eslint/typescript-estree": "8.48.0",
-    "@typescript-eslint/utils": "8.48.0",
+    "@typescript-eslint/typescript-estree": "8.48.1",
+    "@typescript-eslint/utils": "8.48.1",
     "bupkis": "0.13.0",
     "cspell": "9.4.0",
     "eslint": "9.39.1",
@@ -85,14 +85,14 @@
     "markdownlint-cli2": "0.19.1",
     "markdownlint-cli2-formatter-pretty": "0.0.9",
     "npm-run-all2": "8.0.4",
-    "prettier": "3.7.3",
+    "prettier": "3.7.4",
     "prettier-plugin-jsdoc": "1.7.0",
     "prettier-plugin-pkg": "0.21.2",
     "prettier-plugin-sort-json": "4.1.1",
     "tshy": "3.1.0",
     "tsx": "4.21.0",
     "typescript": "5.9.3",
-    "typescript-eslint": "8.48.0"
+    "typescript-eslint": "8.48.1"
   },
   "knip": {
     "ignoreDependencies": [
