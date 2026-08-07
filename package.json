@@ -62,7 +62,7 @@
   },
   "dependencies": {
     "@endo/compartment-mapper": "1.6.3",
-    "ses": "1.14.0"
+    "ses": "1.15.0"
   },
   "devDependencies": {
     "@commitlint/cli": "20.5.3",
